@@ -1,4 +1,4 @@
-# Rewear
+# Odoo Hackathon
 
 ## Problem Statement 3
 
