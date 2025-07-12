@@ -10,6 +10,7 @@ import Help from './components/Help.jsx';
 import TermsOfService from './components/TermsOfService.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import BrowseItems from './components/BrowseItems.jsx';
+import SwapItems from './components/SwapItems.jsx';
 import ListItem from './components/ListItem.jsx';
 import Profile from './components/Profile.jsx';
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/terms" element={<PrivateRoute><TermsOfService /></PrivateRoute>} />
           <Route path="/privacy" element={<PrivateRoute><PrivacyPolicy /></PrivateRoute>} />
           <Route path="/browse" element={<PrivateRoute><BrowseItems /></PrivateRoute>} />
+          <Route path="/swap" element={<PrivateRoute><SwapItems /></PrivateRoute>} />
           <Route path="/list-item" element={<PrivateRoute><ListItem /></PrivateRoute>} />
           <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
           <Route path="/" element={<Login />} />

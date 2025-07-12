@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Navbar, Nav } from 'react-bootstrap';
 
-const BrowseItems = () => {
+const SwapItems = () => {
     const [products, setProducts] = useState([
         {
             id: 1,
@@ -78,8 +78,6 @@ const BrowseItems = () => {
         }
     ]);
 
-
-
     return (
         <div className="dashboard-wrapper">
             {/* Navbar */}
@@ -112,13 +110,13 @@ const BrowseItems = () => {
                     <div className="row mx-0">
                         <div className="col-12 px-0">
                             <div className="container-fluid px-0">
-                                <h1 className="display-4 mb-4">Browse Items</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row mx-0">
-                        <div className="col-12 px-0">
-                            <div className="container-fluid px-0">
+                                <h1 className="display-4 mb-4">Swap Items</h1>
+                                <div className="d-flex justify-content-end mb-4">
+                                    <Link to="/list-item" className="btn btn-primary">
+                                        <i className="bi bi-plus-circle me-2"></i>
+                                        Add Product
+                                    </Link>
+                                </div>
                                 <Row xs={2} md={4} className="g-2 mb-5">
                                     {products.map((product) => (
                                         <Col key={product.id} className="px-2">
@@ -141,9 +139,6 @@ const BrowseItems = () => {
                                                         </div>
                                                     </div>
                                                     <div className="d-flex gap-1">
-                                                        <Button variant="primary" size="sm" className="flex-grow-1">
-                                                            Purchase
-                                                        </Button>
                                                         <Button variant="outline-primary" size="sm" className="flex-grow-1">
                                                             Swap
                                                         </Button>
@@ -158,26 +153,8 @@ const BrowseItems = () => {
                     </div>
                 </Container>
             </div>
-
-            {/* Footer */}
-            <footer className="dashboard-footer">
-                <div className="container-fluid px-5">
-                    <div className="row">
-                        <div className="col-md-8">
-                            <h3 className="mb-4">About ReWear</h3>
-                            <p>Join our community of sustainable fashion enthusiasts. Swap clothes, save money, and reduce waste.</p>
-                            <div className="social-links mb-4">
-                                <a href="#" className="social-link"><i className="bi bi-facebook"></i></a>
-                                <a href="#" className="social-link"><i className="bi bi-instagram"></i></a>
-                                <a href="#" className="social-link"><i className="bi bi-twitter"></i></a>
-                                <a href="#" className="social-link"><i className="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 };
 
-export default BrowseItems;
+export default SwapItems;

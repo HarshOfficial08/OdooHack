@@ -3,6 +3,7 @@ import { useNavigate, Routes, Route } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BrowseItems from './BrowseItems';
+import SwapItems from './SwapItems';
 import ListItem from './ListItem';
 import Profile from './Profile';
 import AboutUs from './AboutUs';
@@ -35,7 +36,7 @@ const Dashboard = () => {
                         </div>
                         <div className="col">
                             <div className="d-flex justify-content-center">
-                                <Link to="/" className="nav-link text-white me-3">Home</Link>
+                                <Link to="/dashboard" className="nav-link text-white me-3">Home</Link>
                                 <Link to="/browse" className="nav-link text-white me-3">Browse Items</Link>
                                 <Link to="/list-item" className="nav-link text-white me-3">List an Item</Link>
                                 <Link to="/about" className="nav-link text-white me-3">About Us</Link>
@@ -79,8 +80,7 @@ const Dashboard = () => {
                                 Exchange your unused clothes for something new. Join our community and make a positive impact on the planet.
                             </p>
                             <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                                <Link to="/list-item" className="btn dashboard-btn me-md-2">
-                                    <i className="bi bi-arrow-right-circle me-2"></i>
+                                <Link to="/swap" className="btn btn-primary btn-lg me-3">
                                     Start Swapping
                                 </Link>
                                 <Link to="/browse" className="btn btn-outline-primary dashboard-btn">
@@ -108,6 +108,7 @@ const Dashboard = () => {
                 <div className="container-fluid px-5">
                     <Routes>
                         <Route path="/browse" element={<BrowseItems />} />
+                        <Route path="/swap" element={<SwapItems />} />
                         <Route path="/list-item" element={<ListItem />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/about" element={<AboutUs />} />
@@ -234,9 +235,9 @@ const Dashboard = () => {
                                     width="100%" 
                                     height="300" 
                                     style={{border: '0'}} 
-                                    allowfullscreen="" 
+                                    allowFullScreen="" 
                                     loading="lazy" 
-                                    referrerpolicy="no-referrer-when-downgrade"
+                                    referrerPolicy="no-referrer-when-downgrade"
                                 ></iframe>
                             </div>
                         </div>
