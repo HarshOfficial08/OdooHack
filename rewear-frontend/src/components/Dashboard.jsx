@@ -27,12 +27,12 @@ const Dashboard = () => {
                         </div>
                         <div className="col">
                             <div className="d-flex justify-content-center">
-                                <a href="/" className="nav-link text-white me-3">Home</a>
-                                <a href="/browse" className="nav-link text-white me-3">Browse Items</a>
-                                <a href="/list-item" className="nav-link text-white me-3">List an Item</a>
-                                <a href="/about" className="nav-link text-white me-3">About Us</a>
-                                <a href="/contact" className="nav-link text-white me-3">Contact</a>
-                                <a href="/help" className="nav-link text-white">Help</a>
+                                <Link to="/" className="nav-link text-white me-3">Home</Link>
+                                <Link to="/browse" className="nav-link text-white me-3">Browse Items</Link>
+                                <Link to="/list-item" className="nav-link text-white me-3">List an Item</Link>
+                                <Link to="/about" className="nav-link text-white me-3">About Us</Link>
+                                <Link to="/contact" className="nav-link text-white me-3">Contact</Link>
+                                <Link to="/help" className="nav-link text-white">Help</Link>
                             </div>
                         </div>
                         <div className="col-auto ms-5">
@@ -45,9 +45,9 @@ const Dashboard = () => {
                                     />
                                 </div>
                                 <div className="navbar-user">
-                                    <a href="/profile" className="nav-link text-white">
+                                    <Link to="/profile" className="nav-link text-white">
                                         <i className="bi bi-person-circle"></i>
-                                    </a>
+                                    </Link>
                                     <button className="btn btn-outline-light" onClick={handleLogout}>
                                         <i className="bi bi-box-arrow-right me-2"></i>
                                         Logout
@@ -71,14 +71,14 @@ const Dashboard = () => {
                                 Exchange your unused clothes for something new. Join our community and make a positive impact on the planet.
                             </p>
                             <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                                <button className="btn dashboard-btn me-md-2">
+                                <Link to="/list-item" className="btn dashboard-btn me-md-2">
                                     <i className="bi bi-arrow-right-circle me-2"></i>
                                     Start Swapping
-                                </button>
-                                <button className="btn btn-outline-primary dashboard-btn">
+                                </Link>
+                                <Link to="/browse" className="btn btn-outline-primary dashboard-btn">
                                     <i className="bi bi-search me-2"></i>
                                     Browse Items
-                                </button>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-md-6">
