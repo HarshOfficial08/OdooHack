@@ -9,7 +9,21 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [token, setToken] = useState(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            return storedToken;
+        }
+        return null;
+    });
+
+    // Load user data from localStorage on mount
+    useEffect(() => {
+        const storedUserData = localStorage.getItem('user');
+        if (storedUserData) {
+            setUser(JSON.parse(storedUserData));
+        }
+    }, []);
 
     const login = async (email, password) => {
         try {
@@ -20,10 +34,15 @@ export const AuthProvider = ({ children }) => {
             
             const { token, user } = response.data;
             localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
             setToken(token);
             setUser(user);
             return { success: true, user, token };
         } catch (error) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            setToken(null);
+            setUser(null);
             return { success: false, error: error.response?.data?.message || 'Login failed' };
         }
     };
@@ -38,16 +57,22 @@ export const AuthProvider = ({ children }) => {
             
             const { token, user } = response.data;
             localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
             setToken(token);
             setUser(user);
             return { success: true, user, token };
         } catch (error) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            setToken(null);
+            setUser(null);
             return { success: false, error: error.response?.data?.message || 'Registration failed' };
         }
     };
 
     const logout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         setToken(null);
         setUser(null);
     };
