@@ -1,7 +1,15 @@
 import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import BrowseItems from './BrowseItems';
+import ListItem from './ListItem';
+import Profile from './Profile';
+import AboutUs from './AboutUs';
+import Contact from './Contact';
+import Help from './Help';
+import TermsOfService from './TermsOfService';
+import PrivacyPolicy from './PrivacyPolicy';
 import '../styles/dashboard.css';
 
 const Dashboard = () => {
@@ -84,10 +92,10 @@ const Dashboard = () => {
                         <div className="col-md-6">
                             <div className="carousel">
                                 <div className="carousel-item active">
-                                    <img src="/images/featured-item-1.jpg" className="img-fluid rounded-3" alt="Featured Item 1" />
+                                    <img src="images/b.png" className="img-fluid rounded-3" alt="Featured Item 1" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img src="/images/featured-item-2.jpg" className="img-fluid rounded-3" alt="Featured Item 2" />
+                                    <img src="images/b.png" className="img-fluid rounded-3" alt="Featured Item 2" />
                                 </div>
                             </div>
                         </div>
@@ -98,7 +106,19 @@ const Dashboard = () => {
             {/* Content Section */}
             <div className="dashboard-content">
                 <div className="container-fluid px-5">
+                    <Routes>
+                        <Route path="/browse" element={<BrowseItems />} />
+                        <Route path="/list-item" element={<ListItem />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/about" element={<AboutUs />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/help" element={<Help />} />
+                        <Route path="/terms" element={<TermsOfService />} />
+                        <Route path="/privacy" element={<PrivacyPolicy />} />
+                    </Routes>
                     {/* How It Works */}
+
+                    <br /><br /><br />
                     <section className="mb-5">
                         <h2 className="text-center mb-4">How It Works</h2>
                         <div className="row">
