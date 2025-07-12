@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,29 +11,24 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-let db;
-const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-async function connectDB() {
-    try {
-        await client.connect();
-        db = client.db('rewear_db');
-        console.log('Connected to MongoDB');
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
-    }
-}
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
 app.get('/', (req, res) => {
     res.json({ message: 'Rewear API is running' });
 });
 
 // Start server
-const startServer = async () => {
+const startServer = () => {
     try {
-        await connectDB();
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
         });
